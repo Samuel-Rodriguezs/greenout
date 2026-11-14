@@ -71,6 +71,10 @@ class TestSQLVendas(unittest.TestCase):
                          [("Rio de Janeiro", 2), ("São Paulo", 2),
                           ("Curitiba", 1), ("Não informada", 1)])
 
+    def test_dias_ate_primeira_compra(self):
+        self.assertEqual(consulta(self.con, "20_dias_ate_primeira_compra.sql"),
+                         [("Carla", 31), ("Eva", 32), ("Ana", 56), ("Bruno", 72)])
+
 
 if __name__ == "__main__":
     unittest.main()
