@@ -28,6 +28,16 @@ class TestSQLImobiliaria(unittest.TestCase):
             (7, 'apartamento', 'Jardins', 2000.0),
             (8, 'casa', 'Vila Nova', 2600.0)])
 
+    def test_atrasos_pagamento(self):
+        self.assertEqual(consulta(self.con, "03_atrasos_pagamento.sql"), [('Daniel Esteves', '2025-03', 107, 'em aberto'),
+            ('Ana Beatriz', '2025-06', 25, 'em aberto'),
+            ('Daniel Esteves', '2025-04', 15, 'pago com atraso'),
+            ('Daniel Esteves', '2025-06', 15, 'em aberto'),
+            ('Bruno Castro', '2025-04', 10, 'pago com atraso'),
+            ('Ana Beatriz', '2025-03', 7, 'pago com atraso'),
+            ('Daniel Esteves', '2025-02', 5, 'pago com atraso'),
+            ('Camila Dutra', '2025-05', 4, 'pago com atraso')])
+
 
 if __name__ == "__main__":
     unittest.main()
