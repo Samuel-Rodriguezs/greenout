@@ -39,3 +39,8 @@ class TestSQLFinancas(unittest.TestCase):
     def test_resumo_receita_despesa(self):
         self.assertEqual(consulta(self.con, "06_resumo_receita_despesa.sql"),
                          [(1, "Receita", 11000), (2, "Despesa", 5700), (3, "Resultado", 5300)])
+
+    def test_participacao_por_categoria(self):
+        self.assertEqual(consulta(self.con, "07_participacao_por_categoria.sql"), [
+            ("Moradia", 3000, 52.6), ("Alimentação", 1850, 32.5),
+            ("Lazer", 550, 9.6), ("Transporte", 300, 5.3)])
