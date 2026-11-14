@@ -54,6 +54,11 @@ class TestSQLVendas(unittest.TestCase):
                           ("Papelaria", "Agenda", 210.0),
                           ("Papelaria", "Caneta", 150.0)])
 
+    def test_receita_acumulada(self):
+        self.assertEqual(consulta(self.con, "17_receita_acumulada.sql"),
+                         [("2025-01", 3100.0, 3100.0), ("2025-02", 1800.0, 4900.0),
+                          ("2025-03", 3910.0, 8810.0), ("2025-04", 1300.0, 10110.0)])
+
 
 if __name__ == "__main__":
     unittest.main()
