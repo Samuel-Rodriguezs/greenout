@@ -53,3 +53,8 @@ class TestSQLStreaming(unittest.TestCase):
 
     def test_assistiu_sem_avaliar(self):
         self.assertEqual(consulta(self.con, "08_assistiu_sem_avaliar.sql"), [("Cris", "Noite Eterna"), ("Duda", "Orbita")])
+
+    def test_grupos_de_consumo(self):
+        self.assertEqual(consulta(self.con, "09_grupos_de_consumo.sql"), [
+            ("Ana", 283, "intenso", 28.6), ("Cris", 267, "intenso", 55.6), ("Edu", 260, "intenso", 81.8),
+            ("Beto", 95, "leve", 91.4), ("Duda", 85, "leve", 100.0)])
