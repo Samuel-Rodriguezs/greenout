@@ -45,6 +45,15 @@ class TestSQLVendas(unittest.TestCase):
                          [(1, "Ana", 6300.0), (2, "Bruno", 3100.0),
                           (3, "Eva", 500.0), (4, "Carla", 210.0)])
 
+    def test_top2_produtos_por_categoria(self):
+        self.assertEqual(consulta(self.con, "16_top2_produtos_por_categoria.sql"),
+                         [("Informática", "Notebook", 6000.0),
+                          ("Informática", "Teclado", 450.0),
+                          ("Móveis", "Cadeira", 2400.0),
+                          ("Móveis", "Mesa", 600.0),
+                          ("Papelaria", "Agenda", 210.0),
+                          ("Papelaria", "Caneta", 150.0)])
+
 
 if __name__ == "__main__":
     unittest.main()
