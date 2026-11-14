@@ -61,6 +61,16 @@ class TestSQLRh(unittest.TestCase):
             ('Iara Nunes', 5, 30, 0),
             ('Joao Teles', 3, 0, 0)])
 
+    def test_quartis_salariais(self):
+        self.assertEqual(consulta(self.con, "08_quartis_salariais.sql"), [('Joao Teles', 2400.0, 1, 1),
+            ('Iara Nunes', 2800.0, 1, 2),
+            ('Hugo Prado', 4200.0, 2, 2),
+            ('Gina Rocha', 5200.0, 2, 3),
+            ('Fabio Lima', 7000.0, 3, 4),
+            ('Elaine Souza', 11500.0, 3, 5),
+            ('Diego Alves', 12500.0, 4, 6),
+            ('Carla Mendes', 18000.0, 4, 7)])
+
 
 if __name__ == "__main__":
     unittest.main()
