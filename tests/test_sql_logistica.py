@@ -79,6 +79,12 @@ class TestSQLLogistica(unittest.TestCase):
             ('L008', '2025-03-15', 'S', 300, 300),
             ('L008', '2025-04-15', 'S', 200, 100)])
 
+    def test_pontualidade_fornecedores(self):
+        self.assertEqual(consulta(self.con, "07_pontualidade_fornecedores.sql"), [
+            ('Brasil Clean', 2, 2, 100.0, 13.5),
+            ('Agro Vale', 2, 1, 50.0, 11.0),
+            ('Lácteos Serra', 2, 0, 0.0, 8.0)])
+
 
 if __name__ == "__main__":
     unittest.main()
