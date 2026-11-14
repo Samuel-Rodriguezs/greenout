@@ -27,3 +27,6 @@ class TestSQLAeroporto(unittest.TestCase):
     def test_receita_por_rota(self):
         self.assertEqual(consulta(self.con, "02_receita_por_rota.sql"), [
             ("GRU-CWB", 5, 2450.0), ("GRU-REC", 3, 1560.0), ("REC-GRU", 2, 1230.0)])
+
+    def test_destinos_com_conexao(self):
+        self.assertEqual(consulta(self.con, "03_destinos_com_conexao.sql"), [("GRU", 1), ("POA", 1), ("REC", 2)])
