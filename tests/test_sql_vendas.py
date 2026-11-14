@@ -66,6 +66,11 @@ class TestSQLVendas(unittest.TestCase):
                           (7, 700.0, "medio"), (8, 350.0, "baixo"), (9, 800.0, "medio"),
                           (10, 150.0, "baixo")])
 
+    def test_clientes_por_cidade(self):
+        self.assertEqual(consulta(self.con, "19_clientes_por_cidade.sql"),
+                         [("Rio de Janeiro", 2), ("São Paulo", 2),
+                          ("Curitiba", 1), ("Não informada", 1)])
+
 
 if __name__ == "__main__":
     unittest.main()
