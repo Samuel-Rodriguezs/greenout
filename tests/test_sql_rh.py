@@ -71,6 +71,13 @@ class TestSQLRh(unittest.TestCase):
             ('Diego Alves', 12500.0, 4, 6),
             ('Carla Mendes', 18000.0, 4, 7)])
 
+    def test_percentual_folha_por_cargo(self):
+        self.assertEqual(consulta(self.con, "09_percentual_folha_por_cargo.sql"), [(1, 'Gerente', 24000.0, 37.7, 37.7),
+            (2, 'Diretor', 18000.0, 28.3, 66.0),
+            (3, 'Analista', 9400.0, 14.8, 80.8),
+            (4, 'Coordenador', 7000.0, 11.0, 91.8),
+            (5, 'Assistente', 5200.0, 8.2, 100.0)])
+
 
 if __name__ == "__main__":
     unittest.main()
