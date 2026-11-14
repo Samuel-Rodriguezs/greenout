@@ -18,6 +18,11 @@ class TestSQLDelivery(unittest.TestCase):
         n = self.con.execute("SELECT COUNT(*) FROM clientes").fetchone()[0]
         self.assertEqual(n, 5)
 
+    def test_faturamento_por_restaurante(self):
+        self.assertEqual(consulta(self.con, "01_faturamento_por_restaurante.sql"), [('Trattoria Roma', 4, 9, 429.0),
+            ('Burger Lab', 4, 13, 346.0),
+            ('Sushi Kyoto', 2, 6, 216.0)])
+
 
 if __name__ == "__main__":
     unittest.main()
