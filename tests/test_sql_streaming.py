@@ -20,3 +20,8 @@ class TestSQLStreaming(unittest.TestCase):
 
     def test_minutos_por_usuario(self):
         self.assertEqual(consulta(self.con, "01_minutos_por_usuario.sql"), [("Ana", 283, 3), ("Cris", 267, 3), ("Edu", 260, 2)])
+
+    def test_ranking_notas(self):
+        self.assertEqual(consulta(self.con, "02_ranking_notas.sql"), [
+            ("Codigo Zero", 4.5, 2, 1), ("O Ultimo Farol", 4.5, 2, 1), ("Noite Eterna", 4.0, 3, 3),
+            ("Riso Facil", 3.5, 2, 4), ("Orbita", 3.0, 1, 5)])
