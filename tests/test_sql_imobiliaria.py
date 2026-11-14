@@ -71,6 +71,9 @@ class TestSQLImobiliaria(unittest.TestCase):
     def test_parcelas_faltantes(self):
         self.assertEqual(consulta(self.con, "09_parcelas_faltantes.sql"), [(3, '2025-02'), (3, '2025-03'), (6, '2025-03')])
 
+    def test_locatarios_antigos_e_atuais(self):
+        self.assertEqual(consulta(self.con, "10_locatarios_antigos_e_atuais.sql"), [('Bruno Castro',), ('Daniel Esteves',)])
+
 
 if __name__ == "__main__":
     unittest.main()
