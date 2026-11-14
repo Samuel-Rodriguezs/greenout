@@ -28,6 +28,16 @@ class TestSQLRh(unittest.TestCase):
             ('Analista', 3, 'Diretor > Gerente > Coordenador > Analista', 2),
             ('Assistente', 4, 'Diretor > Gerente > Coordenador > Analista > Assistente', 2)])
 
+    def test_ranking_salarial_departamento(self):
+        self.assertEqual(consulta(self.con, "03_ranking_salarial_departamento.sql"), [('Comercial', 'Iara Nunes', 2800.0, 1),
+            ('Financeiro', 'Elaine Souza', 11500.0, 1),
+            ('Financeiro', 'Hugo Prado', 4200.0, 2),
+            ('Tecnologia', 'Carla Mendes', 18000.0, 1),
+            ('Tecnologia', 'Diego Alves', 12500.0, 2),
+            ('Tecnologia', 'Fabio Lima', 7000.0, 3),
+            ('Tecnologia', 'Gina Rocha', 5200.0, 4),
+            ('Tecnologia', 'Joao Teles', 2400.0, 5)])
+
 
 if __name__ == "__main__":
     unittest.main()
