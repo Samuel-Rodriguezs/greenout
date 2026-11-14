@@ -18,6 +18,11 @@ class TestSQLJuridico(unittest.TestCase):
         n = self.con.execute("SELECT COUNT(*) FROM clientes").fetchone()[0]
         self.assertEqual(n, 6)
 
+    def test_processos_por_advogado(self):
+        self.assertEqual(consulta(self.con, "01_processos_por_advogado.sql"), [
+            ('Clara Nunes', 2, 150000.0),
+            ('Pedro Lacerda', 2, 140000.0)])
+
 
 if __name__ == "__main__":
     unittest.main()
