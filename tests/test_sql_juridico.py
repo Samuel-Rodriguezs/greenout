@@ -82,6 +82,15 @@ class TestSQLJuridico(unittest.TestCase):
             ('Trabalhista', 2, 0, 0, 125000.0),
             ('Tributário', 1, 1, 1, 1500000.0)])
 
+    def test_recebimento_acumulado(self):
+        self.assertEqual(consulta(self.con, "09_recebimento_acumulado.sql"), [
+            ('2025-01', 5000.0, 5000.0, 5.2),
+            ('2025-02', 8000.0, 13000.0, 8.3),
+            ('2025-03', 26000.0, 39000.0, 26.9),
+            ('2025-04', 28000.0, 67000.0, 29.0),
+            ('2025-05', 26500.0, 93500.0, 27.5),
+            ('2025-06', 3000.0, 96500.0, 3.1)])
+
 
 if __name__ == "__main__":
     unittest.main()
