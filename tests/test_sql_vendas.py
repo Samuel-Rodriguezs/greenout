@@ -26,6 +26,11 @@ class TestSQLVendas(unittest.TestCase):
         self.assertEqual(consulta(self.con, "11_clientes_grandes_compradores.sql"),
                          [("Ana", 3300.0), ("Bruno", 2300.0), ("Eva", 500.0)])
 
+    def test_pedidos_por_cliente(self):
+        self.assertEqual(consulta(self.con, "12_pedidos_por_cliente.sql"),
+                         [("Ana", 3), ("Bruno", 3), ("Carla", 2), ("Eva", 2),
+                          ("Davi", 0), ("Filipe", 0)])
+
 
 if __name__ == "__main__":
     unittest.main()
