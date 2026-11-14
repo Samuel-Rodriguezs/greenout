@@ -70,6 +70,11 @@ class TestSQLJuridico(unittest.TestCase):
             ('Clínica Gama', 4, '2025-06-01', 14, 510.0, 'leve'),
             ('Construtora Alfa', 3, '2025-06-10', 5, 250.0, 'leve')])
 
+    def test_clientes_sem_audiencia_futura(self):
+        self.assertEqual(consulta(self.con, "07_clientes_sem_audiencia_futura.sql"), [
+            ('João Pereira', 1),
+            ('Mercado Beta', 1)])
+
 
 if __name__ == "__main__":
     unittest.main()
