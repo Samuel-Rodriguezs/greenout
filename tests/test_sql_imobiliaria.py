@@ -68,6 +68,9 @@ class TestSQLImobiliaria(unittest.TestCase):
             (2, '2025-04-02', 'periodica', 9, 10, 2),
             (8, '2024-12-31', 'saida', 7, 8, 2)])
 
+    def test_parcelas_faltantes(self):
+        self.assertEqual(consulta(self.con, "09_parcelas_faltantes.sql"), [(3, '2025-02'), (3, '2025-03'), (6, '2025-03')])
+
 
 if __name__ == "__main__":
     unittest.main()
