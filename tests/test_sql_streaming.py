@@ -42,3 +42,7 @@ class TestSQLStreaming(unittest.TestCase):
             ("Ana", "2025-01-18", 7), ("Ana", "2025-02-02", 15), ("Ana", "2025-02-14", 12),
             ("Beto", "2025-02-01", 20), ("Cris", "2025-02-03", 13), ("Cris", "2025-03-02", 27),
             ("Edu", "2025-03-01", 17)])
+
+    def test_maratonistas(self):
+        self.assertEqual(consulta(self.con, "06_maratonistas.sql"), [
+            ("Ana", "Noite Eterna"), ("Beto", "Riso Facil"), ("Cris", "Codigo Zero"), ("Edu", "Noite Eterna")])
