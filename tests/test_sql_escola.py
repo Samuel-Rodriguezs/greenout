@@ -23,3 +23,8 @@ class TestSQLEscola(unittest.TestCase):
         self.assertEqual(consulta(self.con, "02_situacao.sql"), [
             ("Ana", "Aprovado"), ("Bruno", "Recuperação"), ("Carla", "Aprovado"),
             ("Diego", "Reprovado"), ("Elisa", "Aprovado"), ("Fábio", "Aprovado")])
+
+    def test_ranking_geral(self):
+        self.assertEqual(consulta(self.con, "03_ranking_geral.sql"), [
+            ("Ana", 8.5, 1), ("Elisa", 8.5, 1), ("Carla", 7.0, 3),
+            ("Fábio", 7.0, 3), ("Bruno", 5.5, 5), ("Diego", 4.5, 6)])
