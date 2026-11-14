@@ -55,6 +55,12 @@ class TestSQLRh(unittest.TestCase):
             ('Iara Nunes', 'afastado sem ferias'),
             ('Joao Teles', 'afastado sem ferias')])
 
+    def test_afastamentos_pivot(self):
+        self.assertEqual(consulta(self.con, "07_afastamentos_pivot.sql"), [('Elaine Souza', 0, 0, 5),
+            ('Gina Rocha', 10, 0, 5),
+            ('Iara Nunes', 5, 30, 0),
+            ('Joao Teles', 3, 0, 0)])
+
 
 if __name__ == "__main__":
     unittest.main()
