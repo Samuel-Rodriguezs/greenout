@@ -13,3 +13,7 @@ class TestSQLFinancas(unittest.TestCase):
     def setUp(self):
         self.con = sqlite3.connect(":memory:")
         self.con.executescript((SQL / "00_schema.sql").read_text())
+
+    def test_saldo_por_conta(self):
+        self.assertEqual(consulta(self.con, "01_saldo_por_conta.sql"),
+                         [("Corrente", 4300), ("Poupança", 1000), ("Carteira", 0)])
