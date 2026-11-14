@@ -75,6 +75,13 @@ class TestSQLJuridico(unittest.TestCase):
             ('João Pereira', 1),
             ('Mercado Beta', 1)])
 
+    def test_pivot_area_status(self):
+        self.assertEqual(consulta(self.con, "08_pivot_area_status.sql"), [
+            ('Civil', 3, 0, 0, 590000.0),
+            ('Família', 1, 0, 0, 120000.0),
+            ('Trabalhista', 2, 0, 0, 125000.0),
+            ('Tributário', 1, 1, 1, 1500000.0)])
+
 
 if __name__ == "__main__":
     unittest.main()
