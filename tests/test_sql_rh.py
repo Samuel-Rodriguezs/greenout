@@ -18,6 +18,9 @@ class TestSQLRh(unittest.TestCase):
         n = self.con.execute("SELECT COUNT(*) FROM funcionarios").fetchone()[0]
         self.assertEqual(n, 8)
 
+    def test_folha_por_departamento(self):
+        self.assertEqual(consulta(self.con, "01_folha_por_departamento.sql"), [('Tecnologia', 5, 45100.0, 9020.0), ('Financeiro', 2, 15700.0, 7850.0)])
+
 
 if __name__ == "__main__":
     unittest.main()
