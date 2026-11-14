@@ -61,6 +61,16 @@ class TestSQLPesquisa(unittest.TestCase):
             ('Genômica', 'Sequenciamento Rápido', 2),
             ('Redes', 'Roteamento Adaptativo', 2)])
 
+    def test_producao_anual(self):
+        self.assertEqual(consulta(self.con, "06_producao_anual.sql"), [
+            (2018, 1, None, None, 1),
+            (2019, 2, 1, 1, 1),
+            (2020, 1, 2, -1, 1),
+            (2021, 2, 1, 1, 1),
+            (2022, 2, 2, 0, 1),
+            (2023, 2, 2, 0, 1),
+            (2024, 2, 2, 0, 1)])
+
 
 if __name__ == "__main__":
     unittest.main()
