@@ -35,6 +35,14 @@ class TestSQLPesquisa(unittest.TestCase):
             ('Gabi Alves', 3, 1),
             ('Hugo Lima', 2, 1)])
 
+    def test_cadeia_de_citacoes(self):
+        self.assertEqual(consulta(self.con, "03_cadeia_de_citacoes.sql"), [
+            ('Redes Neurais Esparsas', 2018, 1),
+            ('Poda de Modelos', 2021, 1),
+            ('Treinamento Federado', 2022, 1),
+            ('Compressão de Embeddings', 2023, 1),
+            ('Atenção Eficiente', 2019, 2)])
+
 
 if __name__ == "__main__":
     unittest.main()
