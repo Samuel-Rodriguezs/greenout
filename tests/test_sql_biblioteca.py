@@ -26,3 +26,7 @@ class TestSQLBiblioteca(unittest.TestCase):
         self.assertEqual(consulta(self.con, "03_disponibilidade.sql"), [
             ("A Hora da Estrela", 0), ("Capitães da Areia", 1), ("Dom Casmurro", 1),
             ("Gabriela", 0), ("Memórias Póstumas", 0), ("Perto do Coração Selvagem", 1)])
+
+    def test_ranking_leitores(self):
+        self.assertEqual(consulta(self.con, "04_ranking_leitores.sql"),
+                         [("Ana", 4, 1), ("Bruno", 2, 2), ("Carla", 2, 2), ("Diego", 0, 4)])
