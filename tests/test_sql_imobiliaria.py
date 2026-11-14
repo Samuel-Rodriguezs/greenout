@@ -59,6 +59,9 @@ class TestSQLImobiliaria(unittest.TestCase):
             ('2025-05', 13100.0, 13100.0, 0.0),
             ('2025-06', 8500.0, 13100.0, -4600.0)])
 
+    def test_pivot_tipo_situacao(self):
+        self.assertEqual(consulta(self.con, "07_pivot_tipo_situacao.sql"), [('apartamento', 11, 4, 3), ('casa', 5, 1, 0), ('sala', 4, 0, 0)])
+
 
 if __name__ == "__main__":
     unittest.main()
