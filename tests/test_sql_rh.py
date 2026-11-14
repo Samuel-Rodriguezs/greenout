@@ -38,6 +38,15 @@ class TestSQLRh(unittest.TestCase):
             ('Tecnologia', 'Gina Rocha', 5200.0, 4),
             ('Tecnologia', 'Joao Teles', 2400.0, 5)])
 
+    def test_reajustes_historico(self):
+        self.assertEqual(consulta(self.con, "04_reajustes_historico.sql"), [('Diego Alves', '2021-07-01', 11000.0, 9000.0, 22.2),
+            ('Carla Mendes', '2022-01-01', 18000.0, 15000.0, 20.0),
+            ('Fabio Lima', '2023-01-01', 7000.0, 6000.0, 16.7),
+            ('Gina Rocha', '2024-03-01', 5200.0, 4500.0, 15.6),
+            ('Elaine Souza', '2022-03-01', 11500.0, 10000.0, 15.0),
+            ('Diego Alves', '2023-07-01', 12500.0, 11000.0, 13.6),
+            ('Iara Nunes', '2024-06-01', 2800.0, 2500.0, 12.0)])
+
 
 if __name__ == "__main__":
     unittest.main()
