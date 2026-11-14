@@ -28,6 +28,12 @@ class TestSQLDelivery(unittest.TestCase):
             ('Sushi Kyoto', 'Temaki', 3),
             ('Trattoria Roma', 'Lasanha', 4)])
 
+    def test_ticket_medio_cliente(self):
+        self.assertEqual(consulta(self.con, "03_ticket_medio_cliente.sql"), [('Alice', 4, 117.5, 'alto'),
+            ('Clara', 1, 109.0, 'alto'),
+            ('Bernardo', 3, 99.33, 'medio'),
+            ('Davi', 2, 87.0, 'medio')])
+
 
 if __name__ == "__main__":
     unittest.main()
