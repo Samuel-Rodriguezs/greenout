@@ -46,6 +46,15 @@ class TestSQLDelivery(unittest.TestCase):
     def test_pedidos_por_turno(self):
         self.assertEqual(consulta(self.con, "07_pedidos_por_turno.sql"), [('Burger Lab', 2, 2), ('Sushi Kyoto', 0, 3), ('Trattoria Roma', 3, 1)])
 
+    def test_intervalo_entre_pedidos(self):
+        self.assertEqual(consulta(self.con, "08_intervalo_entre_pedidos.sql"), [('Alice', '2025-05-09', 7),
+            ('Alice', '2025-06-01', 23),
+            ('Alice', '2025-06-14', 13),
+            ('Bernardo', '2025-05-17', 7),
+            ('Bernardo', '2025-06-08', 22),
+            ('Clara', '2025-05-24', 6),
+            ('Davi', '2025-06-07', 13)])
+
 
 if __name__ == "__main__":
     unittest.main()
