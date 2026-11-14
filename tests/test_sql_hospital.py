@@ -36,3 +36,9 @@ class TestSQLHospital(unittest.TestCase):
             ("Cardiologia", "Helena Costa", 900.0, 1), ("Cardiologia", "Paulo Silva", 750.0, 2),
             ("Clínica Geral", "Ivo Tavares", 300.0, 1), ("Clínica Geral", "Lia Campos", 150.0, 2),
             ("Ortopedia", "Marta Rocha", 560.0, 1)])
+
+    def test_intervalo_entre_consultas(self):
+        self.assertEqual(consulta(self.con, "04_intervalo_entre_consultas.sql"), [
+            ("Ana Lima", "2025-02-15", 36), ("Ana Lima", "2025-03-30", 43),
+            ("Bruno Reis", "2025-03-05", 44), ("Elisa Prado", "2025-03-18", 52),
+            ("Fábio Nunes", "2025-03-22", 48)])
