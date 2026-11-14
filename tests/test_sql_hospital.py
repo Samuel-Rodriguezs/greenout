@@ -30,3 +30,9 @@ class TestSQLHospital(unittest.TestCase):
             ("Lia Campos", 2, "Helena Costa > Marta Rocha > Lia Campos"),
             ("Paulo Silva", 1, "Helena Costa > Paulo Silva"),
             ("Ivo Tavares", 2, "Helena Costa > Paulo Silva > Ivo Tavares")])
+
+    def test_ranking_por_especialidade(self):
+        self.assertEqual(consulta(self.con, "03_ranking_por_especialidade.sql"), [
+            ("Cardiologia", "Helena Costa", 900.0, 1), ("Cardiologia", "Paulo Silva", 750.0, 2),
+            ("Clínica Geral", "Ivo Tavares", 300.0, 1), ("Clínica Geral", "Lia Campos", 150.0, 2),
+            ("Ortopedia", "Marta Rocha", 560.0, 1)])
