@@ -50,3 +50,8 @@ class TestSQLAeroporto(unittest.TestCase):
         self.assertEqual(consulta(self.con, "07_pivot_classes_por_voo.sql"), [
             ("AZ100", 1, 1, 1), ("AZ101", 1, 0, 0), ("AZ200", 2, 1, 0), ("AZ201", 1, 1, 0),
             ("AZ300", 1, 0, 1), ("AZ301", 1, 0, 0), ("AZ400", 0, 1, 1), ("AZ500", 1, 0, 0)])
+
+    def test_top2_passageiros_por_pais(self):
+        self.assertEqual(consulta(self.con, "08_top2_passageiros_por_pais.sql"), [
+            ("Alemanha", "Emma Schmidt", 1850.0, 1), ("Brasil", "Alice Martins", 1500.0, 1),
+            ("Brasil", "Camila Ferreira", 1490.0, 2), ("Nigéria", "Daniel Okafor", 180.0, 1)])
