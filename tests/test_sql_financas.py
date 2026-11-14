@@ -21,3 +21,7 @@ class TestSQLFinancas(unittest.TestCase):
     def test_saldo_acumulado(self):
         saldos = [r[3] for r in consulta(self.con, "02_saldo_acumulado.sql")]
         self.assertEqual(saldos, [5000, 3500, 2900, 2700, 7700, 6200, 5450, 5150, 4650, 4300])
+
+    def test_gasto_por_mes(self):
+        self.assertEqual(consulta(self.con, "03_gasto_por_mes.sql"),
+                         [("2024-01", 2300), ("2024-02", 2550), ("2024-03", 850)])
