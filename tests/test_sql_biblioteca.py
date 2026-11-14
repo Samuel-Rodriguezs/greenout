@@ -38,3 +38,7 @@ class TestSQLBiblioteca(unittest.TestCase):
     def test_emprestimos_por_autor(self):
         self.assertEqual(consulta(self.con, "06_emprestimos_por_autor.sql"),
                          [("Machado de Assis", 4), ("Jorge Amado", 3), ("Clarice Lispector", 1)])
+
+    def test_media_dias_leitura(self):
+        self.assertEqual(consulta(self.con, "07_media_dias_leitura.sql"),
+                         [("Bruno", 19.0), ("Ana", 13.0), ("Carla", 9.0)])
