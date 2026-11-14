@@ -64,3 +64,9 @@ class TestSQLHospital(unittest.TestCase):
             ("Ana Lima", 1110.0, "alto"), ("Elisa Prado", 730.0, "alto"),
             ("Bruno Reis", 680.0, "medio"), ("Fábio Nunes", 520.0, "medio"),
             ("Carla Dias", 370.0, "baixo"), ("Diego Melo", 150.0, "baixo")])
+
+    def test_ultima_consulta(self):
+        self.assertEqual(consulta(self.con, "09_ultima_consulta.sql"), [
+            ("Ana Lima", "2025-03-30", "Helena Costa", 1), ("Bruno Reis", "2025-03-05", "Paulo Silva", 1),
+            ("Carla Dias", "2025-02-08", "Marta Rocha", 1), ("Diego Melo", "2025-03-12", "Ivo Tavares", 0),
+            ("Elisa Prado", "2025-03-18", "Paulo Silva", 1), ("Fábio Nunes", "2025-03-22", "Marta Rocha", 1)])
