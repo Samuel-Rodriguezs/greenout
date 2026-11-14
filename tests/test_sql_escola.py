@@ -41,3 +41,7 @@ class TestSQLEscola(unittest.TestCase):
     def test_situacao_por_turma(self):
         self.assertEqual(consulta(self.con, "06_situacao_por_turma.sql"),
                          [("1A", 2, 1, 0), ("1B", 2, 0, 1)])
+
+    def test_acima_da_media_da_turma(self):
+        self.assertEqual(consulta(self.con, "07_acima_da_media_da_turma.sql"),
+                         [("1A", "Ana", 8.5), ("1B", "Elisa", 8.5), ("1B", "Fábio", 7.0)])
