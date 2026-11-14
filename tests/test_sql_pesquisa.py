@@ -43,6 +43,17 @@ class TestSQLPesquisa(unittest.TestCase):
             ('Compressão de Embeddings', 2023, 1),
             ('Atenção Eficiente', 2019, 2)])
 
+    def test_arvore_de_orientacao(self):
+        self.assertEqual(consulta(self.con, "04_arvore_de_orientacao.sql"), [
+            ('Ana Prado', 0, 'Ana Prado', 4),
+            ('Bruno Castro', 1, 'Ana Prado > Bruno Castro', 1),
+            ('Diego Ramos', 2, 'Ana Prado > Bruno Castro > Diego Ramos', 0),
+            ('Carla Mendes', 1, 'Ana Prado > Carla Mendes', 1),
+            ('Gabi Alves', 2, 'Ana Prado > Carla Mendes > Gabi Alves', 0),
+            ('Elena Fischer', 0, 'Elena Fischer', 0),
+            ('Felipe Tanaka', 0, 'Felipe Tanaka', 1),
+            ('Hugo Lima', 1, 'Felipe Tanaka > Hugo Lima', 0)])
+
 
 if __name__ == "__main__":
     unittest.main()
