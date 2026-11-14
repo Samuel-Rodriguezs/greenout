@@ -35,3 +35,7 @@ class TestSQLAeroporto(unittest.TestCase):
         self.assertEqual(consulta(self.con, "04_receita_acumulada_diaria.sql"), [
             ("2025-05-01", 1700.0, 1700.0), ("2025-05-02", 1560.0, 3260.0), ("2025-05-03", 1700.0, 4960.0),
             ("2025-05-10", 300.0, 5260.0), ("2025-06-02", 1070.0, 6330.0), ("2025-06-05", 300.0, 6630.0)])
+
+    def test_fidelidade(self):
+        self.assertEqual(consulta(self.con, "05_fidelidade.sql"), [
+            ("gold", 2, 3350.0), ("sem programa", 3, 1790.0), ("silver", 1, 1490.0)])
