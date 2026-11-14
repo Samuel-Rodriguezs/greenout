@@ -17,3 +17,7 @@ class TestSQLFinancas(unittest.TestCase):
     def test_saldo_por_conta(self):
         self.assertEqual(consulta(self.con, "01_saldo_por_conta.sql"),
                          [("Corrente", 4300), ("Poupança", 1000), ("Carteira", 0)])
+
+    def test_saldo_acumulado(self):
+        saldos = [r[3] for r in consulta(self.con, "02_saldo_acumulado.sql")]
+        self.assertEqual(saldos, [5000, 3500, 2900, 2700, 7700, 6200, 5450, 5150, 4650, 4300])
