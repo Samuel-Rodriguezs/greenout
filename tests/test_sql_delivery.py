@@ -34,6 +34,9 @@ class TestSQLDelivery(unittest.TestCase):
             ('Bernardo', 3, 99.33, 'medio'),
             ('Davi', 2, 87.0, 'medio')])
 
+    def test_clientes_sem_pedidos(self):
+        self.assertEqual(consulta(self.con, "04_clientes_sem_pedidos.sql"), [('Elisa',)])
+
 
 if __name__ == "__main__":
     unittest.main()
