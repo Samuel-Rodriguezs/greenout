@@ -59,6 +59,13 @@ class TestSQLVendas(unittest.TestCase):
                          [("2025-01", 3100.0, 3100.0), ("2025-02", 1800.0, 4900.0),
                           ("2025-03", 3910.0, 8810.0), ("2025-04", 1300.0, 10110.0)])
 
+    def test_faixa_de_valor_pedido(self):
+        self.assertEqual(consulta(self.con, "18_faixa_de_valor_pedido.sql"),
+                         [(1, 3100.0, "alto"), (2, 200.0, "baixo"), (3, 1600.0, "medio"),
+                          (4, 600.0, "medio"), (5, 210.0, "baixo"), (6, 3000.0, "alto"),
+                          (7, 700.0, "medio"), (8, 350.0, "baixo"), (9, 800.0, "medio"),
+                          (10, 150.0, "baixo")])
+
 
 if __name__ == "__main__":
     unittest.main()
