@@ -127,7 +127,7 @@ func TestFuncoes(t *testing.T) {
 			t.Errorf("interna =\n%s\nquer\n%s", got, quer)
 		}
 		mk := funcaoPorNome(t, p, "mk")
-		quer = "CONST 0; GUARDAR 0 0; FECHO 0; RETORNAR; NULO; RETORNAR"
+		quer = "CONST 0; GUARDAR 0 0; FECHO 1; RETORNAR; NULO; RETORNAR"
 		if got := sequencia(mk); got != quer {
 			t.Errorf("mk =\n%s\nquer\n%s", got, quer)
 		}
@@ -207,5 +207,17 @@ func TestPosicoesPreservadas(t *testing.T) {
 	}
 	if !achou {
 		t.Error("DIV não encontrado")
+	}
+}
+
+// Funções içadas podem usar variáveis declaradas antes delas no mesmo escopo.
+func TestFuncaoIcadaUsaVariavelAnterior(t *testing.T) {
+	p := compilar(t, "let g = 1; fn f() { return g; }")
+	if got := sequencia(funcaoPorNome(t, p, "f")); got != "CARREGAR 1 1; RETORNAR; NULO; RETORNAR" {
+		t.Errorf("f = %s", got)
+	}
+	// o fecho de f é criado no início, antes do let
+	if got := sequencia(p.Principal); got != "FECHO 0; GUARDAR 0 0; CONST 0; GUARDAR 0 1; NULO; RETORNAR" {
+		t.Errorf("principal = %s", got)
 	}
 }

@@ -21,24 +21,26 @@ type escopo struct {
 }
 
 type compilador struct {
-	prog     *codigo.Programa
-	atual    *codigo.Funcao
-	esc      *escopo
-	emb      map[string]bool
-	inteiros map[int64]int
-	textos   map[string]int
-	emFuncao bool
-	err      *token.Erro
+	prog      *codigo.Programa
+	atual     *codigo.Funcao
+	esc       *escopo
+	emb       map[string]bool
+	inteiros  map[int64]int
+	textos    map[string]int
+	emFuncao  bool
+	pendentes map[*ast.DeclFuncao]*codigo.Funcao
+	err       *token.Erro
 }
 
 // Compilar gera o programa de bytecode. embutidos lista os nomes das funções
 // nativas que a VM fornecerá. Devolve o primeiro erro encontrado, se houver.
 func Compilar(prog *ast.Programa, embutidos []string) (*codigo.Programa, error) {
 	c := &compilador{
-		prog:     &codigo.Programa{},
-		emb:      map[string]bool{},
-		inteiros: map[int64]int{},
-		textos:   map[string]int{},
+		prog:      &codigo.Programa{},
+		emb:       map[string]bool{},
+		inteiros:  map[int64]int{},
+		textos:    map[string]int{},
+		pendentes: map[*ast.DeclFuncao]*codigo.Funcao{},
 	}
 	for _, e := range embutidos {
 		c.emb[e] = true
@@ -119,7 +121,11 @@ func (c *compilador) resolver(nome string) (saltos, slot int, ok bool) {
 	return 0, 0, false
 }
 
-// sequencia compila comandos no escopo corrente, içando as funções "fn nome".
+// sequencia compila comandos no escopo corrente. As funções "fn nome" são
+// içadas: seus nomes e fechos existem desde o início da sequência (permitindo
+// chamadas antes da declaração e recursão mútua), mas o corpo só é compilado
+// na posição textual da declaração, quando as variáveis anteriores já estão
+// visíveis.
 func (c *compilador) sequencia(cs []ast.Comando) {
 	for _, cmd := range cs {
 		if f, ok := cmd.(*ast.DeclFuncao); ok {
@@ -128,7 +134,8 @@ func (c *compilador) sequencia(cs []ast.Comando) {
 	}
 	for _, cmd := range cs {
 		if f, ok := cmd.(*ast.DeclFuncao); ok {
-			idx := c.funcao(f.Nome.Nome, f.Params, f.Corpo, f.Posicao)
+			fn, idx := c.reservar(f.Nome.Nome, f.Params, f.Corpo)
+			c.pendentes[f] = fn
 			c.emitir(codigo.OpFecho, idx, 0, f.Posicao)
 			c.emitir(codigo.OpGuardar, 0, c.esc.nomes[f.Nome.Nome], f.Posicao)
 		}
@@ -138,9 +145,15 @@ func (c *compilador) sequencia(cs []ast.Comando) {
 	}
 }
 
-// funcao compila o corpo em uma nova função e devolve seu índice na tabela.
-func (c *compilador) funcao(nome string, params []*ast.Identificador, corpo *ast.Bloco, pos token.Posicao) int {
+// reservar cria a função na tabela, ainda sem código, e devolve seu índice.
+func (c *compilador) reservar(nome string, params []*ast.Identificador, corpo *ast.Bloco) (*codigo.Funcao, int) {
 	f := &codigo.Funcao{Nome: nome, Aridade: len(params), NumVars: len(params) + contarDecl(corpo.Comandos)}
+	c.prog.Funcoes = append(c.prog.Funcoes, f)
+	return f, len(c.prog.Funcoes) - 1
+}
+
+// corpo compila o código de uma função reservada em um novo ambiente.
+func (c *compilador) corpo(f *codigo.Funcao, params []*ast.Identificador, corpo *ast.Bloco) {
 	salvaFunc, salvaEsc, salvaEm := c.atual, c.esc, c.emFuncao
 	c.atual, c.emFuncao = f, true
 	c.esc = &escopo{pai: salvaEsc, nomes: map[string]int{}}
@@ -151,8 +164,13 @@ func (c *compilador) funcao(nome string, params []*ast.Identificador, corpo *ast
 	c.emitir(codigo.OpNulo, 0, 0, corpo.Posicao)
 	c.emitir(codigo.OpRetornar, 0, 0, corpo.Posicao)
 	c.atual, c.esc, c.emFuncao = salvaFunc, salvaEsc, salvaEm
-	c.prog.Funcoes = append(c.prog.Funcoes, f)
-	return len(c.prog.Funcoes) - 1
+}
+
+// funcao reserva e compila de imediato (funções anônimas e let de função).
+func (c *compilador) funcao(nome string, params []*ast.Identificador, corpo *ast.Bloco) int {
+	f, idx := c.reservar(nome, params, corpo)
+	c.corpo(f, params, corpo)
+	return idx
 }
 
 func (c *compilador) bloco(b *ast.Bloco) {
@@ -173,7 +191,7 @@ func (c *compilador) comando(cmd ast.Comando) {
 	case *ast.Let:
 		if lit, ok := n.Valor.(*ast.LiteralFuncao); ok {
 			slot := c.declarar(n.Nome.Nome) // permite recursão pelo próprio nome
-			idx := c.funcao(n.Nome.Nome, lit.Params, lit.Corpo, lit.Posicao)
+			idx := c.funcao(n.Nome.Nome, lit.Params, lit.Corpo)
 			c.emitir(codigo.OpFecho, idx, 0, lit.Posicao)
 			c.emitir(codigo.OpGuardar, 0, slot, n.Posicao)
 			return
@@ -219,7 +237,7 @@ func (c *compilador) comando(cmd ast.Comando) {
 		c.emitir(codigo.OpSalto, inicio, 0, n.Posicao)
 		c.atual.Remendar(jf, c.aqui())
 	case *ast.DeclFuncao:
-		// já compilada por sequencia (içamento)
+		c.corpo(c.pendentes[n], n.Params, n.Corpo)
 	}
 }
 
@@ -292,7 +310,7 @@ func (c *compilador) expr(e ast.Expressao) {
 		}
 		c.emitir(codigo.OpChamar, len(n.Args), 0, n.Posicao)
 	case *ast.LiteralFuncao:
-		idx := c.funcao("", n.Params, n.Corpo, n.Posicao)
+		idx := c.funcao("", n.Params, n.Corpo)
 		c.emitir(codigo.OpFecho, idx, 0, n.Posicao)
 	}
 }
