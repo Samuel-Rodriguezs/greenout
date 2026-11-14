@@ -51,6 +51,18 @@ class TestSQLJuridico(unittest.TestCase):
             ('Tributário', '0005-2022', 'Mercado Beta', 900000.0, 2),
             ('Tributário', '0009-2023', 'Construtora Alfa', 250000.0, 3)])
 
+    def test_intervalo_andamentos(self):
+        self.assertEqual(consulta(self.con, "05_intervalo_andamentos.sql"), [
+            ('0001-2024', 'contestação', '2024-03-05', 24),
+            ('0001-2024', 'perícia', '2024-06-20', 107),
+            ('0001-2024', 'sentença', '2025-02-11', 236),
+            ('0002-2024', 'audiência', '2024-07-15', 73),
+            ('0002-2024', 'sentença', '2025-01-10', 179),
+            ('0003-2023', 'despacho', '2024-01-30', 71),
+            ('0003-2023', 'perícia', '2025-05-02', 458),
+            ('0007-2024', 'liminar', '2024-10-01', 19),
+            ('0007-2024', 'recurso', '2025-04-15', 196)])
+
 
 if __name__ == "__main__":
     unittest.main()
