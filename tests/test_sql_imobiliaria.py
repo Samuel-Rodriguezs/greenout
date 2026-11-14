@@ -23,6 +23,11 @@ class TestSQLImobiliaria(unittest.TestCase):
             ('Marcos Vieira', 2, 24000.0),
             ('Antonio Gomes', 2, 12400.0)])
 
+    def test_imoveis_vagos(self):
+        self.assertEqual(consulta(self.con, "02_imoveis_vagos.sql"), [(5, 'casa', 'Centro', 3200.0),
+            (7, 'apartamento', 'Jardins', 2000.0),
+            (8, 'casa', 'Vila Nova', 2600.0)])
+
 
 if __name__ == "__main__":
     unittest.main()
