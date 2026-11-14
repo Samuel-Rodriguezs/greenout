@@ -23,3 +23,7 @@ class TestSQLAeroporto(unittest.TestCase):
             ("AZ200", "B737", 3, 1.88), ("AZ300", "E195", 2, 1.69), ("AZ100", "A320", 3, 1.67),
             ("AZ201", "B737", 2, 1.25), ("AZ400", "A320", 2, 1.11), ("AZ301", "E195", 1, 0.85),
             ("AZ500", "E195", 1, 0.85), ("AZ101", "A320", 1, 0.56)])
+
+    def test_receita_por_rota(self):
+        self.assertEqual(consulta(self.con, "02_receita_por_rota.sql"), [
+            ("GRU-CWB", 5, 2450.0), ("GRU-REC", 3, 1560.0), ("REC-GRU", 2, 1230.0)])
