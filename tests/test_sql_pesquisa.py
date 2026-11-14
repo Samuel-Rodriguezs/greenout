@@ -18,6 +18,12 @@ class TestSQLPesquisa(unittest.TestCase):
         n = self.con.execute("SELECT COUNT(*) FROM pesquisadores").fetchone()[0]
         self.assertEqual(n, 8)
 
+    def test_artigos_por_periodico(self):
+        self.assertEqual(consulta(self.con, "01_artigos_por_periodico.sql"), [
+            ('Journal of AI', 5, 10, 2.0),
+            ('Genome Review', 3, 3, 1.0),
+            ('Network Letters', 3, 3, 1.0)])
+
 
 if __name__ == "__main__":
     unittest.main()
