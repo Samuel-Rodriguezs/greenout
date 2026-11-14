@@ -54,6 +54,13 @@ class TestSQLPesquisa(unittest.TestCase):
             ('Felipe Tanaka', 0, 'Felipe Tanaka', 1),
             ('Hugo Lima', 1, 'Felipe Tanaka > Hugo Lima', 0)])
 
+    def test_artigo_mais_citado_por_area(self):
+        self.assertEqual(consulta(self.con, "05_artigo_mais_citado_por_area.sql"), [
+            ('Aprendizado Profundo', 'Redes Neurais Esparsas', 4),
+            ('Inteligência Artificial', 'Poda de Modelos', 3),
+            ('Genômica', 'Sequenciamento Rápido', 2),
+            ('Redes', 'Roteamento Adaptativo', 2)])
+
 
 if __name__ == "__main__":
     unittest.main()
