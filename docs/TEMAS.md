@@ -26,27 +26,27 @@ Formato: `- [ ] pasta/prefixo — descrição`
 - [x] python/rede_ — redes: CIDR e subnetting, parser de IP/MAC, checksums, máquina de estados TCP, DNS parser, ARP simulado, roteamento por prefixo mais longo
 - [x] python/so_ — sistemas operacionais: escalonadores (FCFS, SJF, RR, prioridade), paginação (FIFO, LRU, Clock), alocador buddy, semáforos simulados, deadlock detection
 - [x] python/comp_ — compiladores: lexer, parser descendente, AST, constant folding, análise de escopo, geração de código para a VM, pretty printer, verificador de tipos simples
-- [ ] python/tipos_ — sistemas de tipos: unificação, Hindley-Milner mínimo, cálculo lambda (redução, Church), combinadores SKI, tipos algébricos, pattern matching
-- [ ] python/fp_ — programação funcional: monads (Maybe, Either, Writer, State), lenses, transducers, memoização, composição, currying, streams preguiçosos
-- [ ] python/gen_ — geradores de dados fictícios com seed: nomes, endereços, CPF/CNPJ válidos, e-mails, lorem, séries temporais, grafos aleatórios
-- [ ] python/puz_ — puzzles: nonograma, quebra-cabeça de 15, kakuro, KenKen, torre de cubos, cavalo de Euler, labirinto de Hanói
+- [x] python/tipos_ — sistemas de tipos: unificação, Hindley-Milner mínimo, cálculo lambda (redução, Church), combinadores SKI, tipos algébricos, pattern matching
+- [x] python/fp_ — programação funcional: monads (Maybe, Either, Writer, State), lenses, transducers, memoização, composição, currying, streams preguiçosos
+- [x] python/gen_ — geradores de dados fictícios com seed: nomes, endereços, CPF/CNPJ válidos, e-mails, lorem, séries temporais, grafos aleatórios
+- [x] python/puz_ — puzzles: nonograma, quebra-cabeça de 15, kakuro, KenKen, torre de cubos, cavalo de Euler, labirinto de Hanói
 - [ ] python/rel_ — relatórios: geradores de tabelas Markdown/HTML/CSV, gráficos ASCII de barras/linhas, templates, formatação numérica pt-BR, paginação de texto
 
 ## Go
 
-- [ ] go-bd/ — módulo novo: key-value com WAL, B-tree, LSM simplificado, índices, parser de comandos, snapshots
-- [ ] go-net/ — módulo novo: CIDR, parser de IP, DNS, protocolo binário próprio (encode/decode), codec com checksum, simulador de roteamento
-- [ ] go-comp/ — módulo novo: lexer, parser, AST, interpretador e VM de uma linguagem pequena
+- [x] go-bd/ — módulo novo: key-value com WAL, B-tree, LSM simplificado, índices, parser de comandos, snapshots
+- [x] go-net/ — módulo novo: CIDR, parser de IP, DNS, protocolo binário próprio (encode/decode), codec com checksum, simulador de roteamento
+- [x] go-comp/ — módulo novo: lexer, parser, AST, interpretador e VM de uma linguagem pequena
 
 ## JavaScript
 
-- [ ] js-geo/ — geometria e mapas: haversine, polígonos, hull, quadtree, projeção, geohash, rotas
-- [ ] js-img/ — imagem em matrizes: convolução, bordas, histogramas, dithering, paletas, redimensionamento
+- [x] js-geo/ — geometria e mapas: haversine, polígonos, hull, quadtree, projeção, geohash, rotas
+- [x] js-img/ — imagem em matrizes: convolução, bordas, histogramas, dithering, paletas, redimensionamento
 - [ ] js-fp/ — programação funcional: lenses, transducers, monads, parser combinators, Either/Maybe
 
 ## C
 
-- [ ] c-os/ — alocadores (buddy, slab), escalonadores, tabela de páginas, pilha de chamadas simulada
+- [x] c-os/ — alocadores (buddy, slab), escalonadores, tabela de páginas, pilha de chamadas simulada
 - [ ] c-net/ — parser de IP/CIDR, checksums, codificação TLV, máquina de estados de protocolo
 
 ## Outros
