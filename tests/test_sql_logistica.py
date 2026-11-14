@@ -100,6 +100,13 @@ class TestSQLLogistica(unittest.TestCase):
         self.assertEqual(consulta(self.con, "09_produtos_sem_saida.sql"), [
             ('Queijo Parmesão', 40, 1920.0)])
 
+    def test_pivot_saidas_mensais(self):
+        self.assertEqual(consulta(self.con, "10_pivot_saidas_mensais.sql"), [
+            ('CD São Paulo', 300, 280, 190, 30, 800),
+            ('CD Curitiba', 120, 240, 100, 10, 470),
+            ('CD Porto Alegre', 0, 150, 0, 0, 150),
+            ('CD Campinas', 0, 0, 40, 100, 140)])
+
 
 if __name__ == "__main__":
     unittest.main()
