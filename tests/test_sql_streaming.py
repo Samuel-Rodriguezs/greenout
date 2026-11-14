@@ -46,3 +46,7 @@ class TestSQLStreaming(unittest.TestCase):
     def test_maratonistas(self):
         self.assertEqual(consulta(self.con, "06_maratonistas.sql"), [
             ("Ana", "Noite Eterna"), ("Beto", "Riso Facil"), ("Cris", "Codigo Zero"), ("Edu", "Noite Eterna")])
+
+    def test_pivot_minutos_por_plano(self):
+        self.assertEqual(consulta(self.con, "07_pivot_minutos_por_plano.sql"), [
+            ("basico", 75, 105, 0), ("padrao", 0, 150, 110), ("premium", 220, 280, 50)])
