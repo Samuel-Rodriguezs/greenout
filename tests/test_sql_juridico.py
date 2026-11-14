@@ -39,6 +39,18 @@ class TestSQLJuridico(unittest.TestCase):
             ('0001-2024', 'Apelação', '2025-06-20', 5, 'próximo'),
             ('0003-2023', 'Laudo pericial', '2025-06-30', 15, 'próximo')])
 
+    def test_ranking_causas_por_area(self):
+        self.assertEqual(consulta(self.con, "04_ranking_causas_por_area.sql"), [
+            ('Civil', '0001-2024', 'Construtora Alfa', 500000.0, 1),
+            ('Civil', '0006-2025', 'Mercado Beta', 60000.0, 2),
+            ('Civil', '0008-2025', 'Maria Souza', 30000.0, 3),
+            ('Família', '0003-2023', 'Maria Souza', 120000.0, 1),
+            ('Trabalhista', '0002-2024', 'Construtora Alfa', 80000.0, 1),
+            ('Trabalhista', '0004-2025', 'João Pereira', 45000.0, 2),
+            ('Tributário', '0007-2024', 'Clínica Gama', 1500000.0, 1),
+            ('Tributário', '0005-2022', 'Mercado Beta', 900000.0, 2),
+            ('Tributário', '0009-2023', 'Construtora Alfa', 250000.0, 3)])
+
 
 if __name__ == "__main__":
     unittest.main()
