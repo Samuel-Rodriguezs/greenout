@@ -71,6 +71,13 @@ class TestSQLPesquisa(unittest.TestCase):
             (2023, 2, 2, 0, 1),
             (2024, 2, 2, 0, 1)])
 
+    def test_pares_de_coautores(self):
+        self.assertEqual(consulta(self.con, "07_pares_de_coautores.sql"), [
+            ('Ana Prado', 'Bruno Castro', 3),
+            ('Bruno Castro', 'Hugo Lima', 2),
+            ('Carla Mendes', 'Diego Ramos', 2),
+            ('Elena Fischer', 'Gabi Alves', 2)])
+
 
 if __name__ == "__main__":
     unittest.main()
