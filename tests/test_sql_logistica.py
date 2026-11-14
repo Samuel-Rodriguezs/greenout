@@ -52,6 +52,16 @@ class TestSQLLogistica(unittest.TestCase):
             ('CD Florianópolis', 2, 700, '1>3>5'),
             ('CD Porto Alegre', 2, 1110, '1>3>4')])
 
+    def test_top2_produtos_por_deposito(self):
+        self.assertEqual(consulta(self.con, "05_top2_produtos_por_deposito.sql"), [
+            ('CD Campinas', 'Iogurte Natural', 100, 1),
+            ('CD Campinas', 'Suco de Uva', 40, 2),
+            ('CD Curitiba', 'Detergente', 400, 1),
+            ('CD Curitiba', 'Desinfetante', 60, 2),
+            ('CD Porto Alegre', 'Água Mineral', 150, 1),
+            ('CD São Paulo', 'Água Mineral', 900, 1),
+            ('CD São Paulo', 'Suco de Uva', 150, 2)])
+
 
 if __name__ == "__main__":
     unittest.main()
