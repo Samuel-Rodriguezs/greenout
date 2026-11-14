@@ -1,0 +1,5 @@
+# Binarios dos testes (test_<nome> sem extensao)
+test_*
+!test_*.c
+*.o
+*.out
