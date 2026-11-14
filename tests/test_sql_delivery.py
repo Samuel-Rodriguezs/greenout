@@ -43,6 +43,9 @@ class TestSQLDelivery(unittest.TestCase):
     def test_desempenho_entregadores(self):
         self.assertEqual(consulta(self.con, "06_desempenho_entregadores.sql"), [('Tiago', 3, 28.3, 1), ('Rafael', 4, 40.0, 2), ('Simone', 3, 40.0, 2)])
 
+    def test_pedidos_por_turno(self):
+        self.assertEqual(consulta(self.con, "07_pedidos_por_turno.sql"), [('Burger Lab', 2, 2), ('Sushi Kyoto', 0, 3), ('Trattoria Roma', 3, 1)])
+
 
 if __name__ == "__main__":
     unittest.main()
