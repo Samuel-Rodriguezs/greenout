@@ -21,3 +21,8 @@ class TestSQLBiblioteca(unittest.TestCase):
     def test_mais_emprestados(self):
         self.assertEqual(consulta(self.con, "02_mais_emprestados.sql"),
                          [("Dom Casmurro", 3), ("Capitães da Areia", 2), ("A Hora da Estrela", 1)])
+
+    def test_disponibilidade(self):
+        self.assertEqual(consulta(self.con, "03_disponibilidade.sql"), [
+            ("A Hora da Estrela", 0), ("Capitães da Areia", 1), ("Dom Casmurro", 1),
+            ("Gabriela", 0), ("Memórias Póstumas", 0), ("Perto do Coração Selvagem", 1)])
