@@ -50,3 +50,6 @@ class TestSQLHospital(unittest.TestCase):
             ("Bruno Reis", "arritmia", "2025-01-26", 5),
             ("Carla Dias", "fratura", "2025-02-12", 3),
             ("Bruno Reis", "arritmia", "2025-03-08", 2)])
+
+    def test_exame_alterado_sem_internacao(self):
+        self.assertEqual(consulta(self.con, "06_exame_alterado_sem_internacao.sql"), [("Ana Lima",)])
