@@ -34,3 +34,7 @@ class TestSQLBiblioteca(unittest.TestCase):
     def test_nunca_emprestados(self):
         self.assertEqual(consulta(self.con, "05_nunca_emprestados.sql"),
                          [("Perto do Coração Selvagem",)])
+
+    def test_emprestimos_por_autor(self):
+        self.assertEqual(consulta(self.con, "06_emprestimos_por_autor.sql"),
+                         [("Machado de Assis", 4), ("Jorge Amado", 3), ("Clarice Lispector", 1)])
