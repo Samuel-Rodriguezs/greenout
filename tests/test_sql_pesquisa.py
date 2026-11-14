@@ -85,6 +85,13 @@ class TestSQLPesquisa(unittest.TestCase):
             ('NSF', 500000.0, 24.8, 1, 47),
             ('CNPq', 270000.0, 13.4, 0, 29)])
 
+    def test_sem_financiamento_vigente(self):
+        self.assertEqual(consulta(self.con, "09_sem_financiamento_vigente.sql"), [
+            ('Carla Mendes', 'UNICAMP', 'financiamento encerrado'),
+            ('Diego Ramos', 'UNICAMP', 'nunca financiado'),
+            ('Gabi Alves', 'USP', 'nunca financiado'),
+            ('Hugo Lima', 'MIT', 'nunca financiado')])
+
 
 if __name__ == "__main__":
     unittest.main()
