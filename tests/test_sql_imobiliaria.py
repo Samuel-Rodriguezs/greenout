@@ -51,6 +51,14 @@ class TestSQLImobiliaria(unittest.TestCase):
             ('Jardins', 4, 'apartamento', 2800.0, 2),
             ('Vila Nova', 8, 'casa', 2600.0, 1)])
 
+    def test_recebimento_mensal_variacao(self):
+        self.assertEqual(consulta(self.con, "06_recebimento_mensal_variacao.sql"), [('2025-01', 14800.0, None, None),
+            ('2025-02', 11800.0, 14800.0, -3000.0),
+            ('2025-03', 4300.0, 11800.0, -7500.0),
+            ('2025-04', 13100.0, 4300.0, 8800.0),
+            ('2025-05', 13100.0, 13100.0, 0.0),
+            ('2025-06', 8500.0, 13100.0, -4600.0)])
+
 
 if __name__ == "__main__":
     unittest.main()
