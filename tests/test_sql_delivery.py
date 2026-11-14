@@ -37,6 +37,9 @@ class TestSQLDelivery(unittest.TestCase):
     def test_clientes_sem_pedidos(self):
         self.assertEqual(consulta(self.con, "04_clientes_sem_pedidos.sql"), [('Elisa',)])
 
+    def test_restaurantes_acima_da_media(self):
+        self.assertEqual(consulta(self.con, "05_restaurantes_acima_da_media.sql"), [('Burger Lab', 4, 4.25), ('Trattoria Roma', 4, 4.25)])
+
 
 if __name__ == "__main__":
     unittest.main()
