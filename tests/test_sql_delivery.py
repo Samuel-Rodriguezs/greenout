@@ -23,6 +23,11 @@ class TestSQLDelivery(unittest.TestCase):
             ('Burger Lab', 4, 13, 346.0),
             ('Sushi Kyoto', 2, 6, 216.0)])
 
+    def test_prato_mais_vendido_por_restaurante(self):
+        self.assertEqual(consulta(self.con, "02_prato_mais_vendido_por_restaurante.sql"), [('Burger Lab', 'Cheeseburger', 8),
+            ('Sushi Kyoto', 'Temaki', 3),
+            ('Trattoria Roma', 'Lasanha', 4)])
+
 
 if __name__ == "__main__":
     unittest.main()
