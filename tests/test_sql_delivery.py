@@ -70,6 +70,11 @@ class TestSQLDelivery(unittest.TestCase):
     def test_clientes_italiana_e_japonesa(self):
         self.assertEqual(consulta(self.con, "10_clientes_italiana_e_japonesa.sql"), [('Alice',), ('Bernardo',)])
 
+    def test_pratos_acima_da_media_restaurante(self):
+        self.assertEqual(consulta(self.con, "11_pratos_acima_da_media_restaurante.sql"), [('Burger Lab', 'Cheeseburger', 32.0, 8),
+            ('Sushi Kyoto', 'Combo Sushi', 68.0, 2),
+            ('Trattoria Roma', 'Pizza Margherita', 55.0, 3)])
+
 
 if __name__ == "__main__":
     unittest.main()
