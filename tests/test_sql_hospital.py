@@ -17,3 +17,8 @@ class TestSQLHospital(unittest.TestCase):
     def test_schema_carregado(self):
         n = self.con.execute("SELECT COUNT(*) FROM pacientes").fetchone()[0]
         self.assertEqual(n, 6)
+
+    def test_medicos_mais_ocupados(self):
+        self.assertEqual(consulta(self.con, "01_medicos_mais_ocupados.sql"), [
+            ("Helena Costa", 3, 900.0), ("Paulo Silva", 3, 750.0),
+            ("Marta Rocha", 2, 560.0), ("Ivo Tavares", 2, 300.0)])
