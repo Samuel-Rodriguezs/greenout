@@ -58,3 +58,9 @@ class TestSQLHospital(unittest.TestCase):
         self.assertEqual(consulta(self.con, "07_receita_mensal_por_especialidade.sql"), [
             ("Cardiologia", 850.0, 0, 800.0), ("Clínica Geral", 0, 300.0, 150.0),
             ("Ortopedia", 0, 280.0, 280.0)])
+
+    def test_faixas_de_gasto(self):
+        self.assertEqual(consulta(self.con, "08_faixas_de_gasto.sql"), [
+            ("Ana Lima", 1110.0, "alto"), ("Elisa Prado", 730.0, "alto"),
+            ("Bruno Reis", 680.0, "medio"), ("Fábio Nunes", 520.0, "medio"),
+            ("Carla Dias", 370.0, "baixo"), ("Diego Melo", 150.0, "baixo")])
