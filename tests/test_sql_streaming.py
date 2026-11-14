@@ -25,3 +25,8 @@ class TestSQLStreaming(unittest.TestCase):
         self.assertEqual(consulta(self.con, "02_ranking_notas.sql"), [
             ("Codigo Zero", 4.5, 2, 1), ("O Ultimo Farol", 4.5, 2, 1), ("Noite Eterna", 4.0, 3, 3),
             ("Riso Facil", 3.5, 2, 4), ("Orbita", 3.0, 1, 5)])
+
+    def test_top2_titulos_por_tipo(self):
+        self.assertEqual(consulta(self.con, "03_top2_titulos_por_tipo.sql"), [
+            ("filme", "O Ultimo Farol", 220), ("filme", "Orbita", 185),
+            ("serie", "Noite Eterna", 348), ("serie", "Codigo Zero", 137)])
