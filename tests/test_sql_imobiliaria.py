@@ -62,6 +62,12 @@ class TestSQLImobiliaria(unittest.TestCase):
     def test_pivot_tipo_situacao(self):
         self.assertEqual(consulta(self.con, "07_pivot_tipo_situacao.sql"), [('apartamento', 11, 4, 3), ('casa', 5, 1, 0), ('sala', 4, 0, 0)])
 
+    def test_vistorias_queda_de_nota(self):
+        self.assertEqual(consulta(self.con, "08_vistorias_queda_de_nota.sql"), [(5, '2025-02-28', 'saida', 4, 7, 2),
+            (1, '2025-05-20', 'periodica', 6, 8, 3),
+            (2, '2025-04-02', 'periodica', 9, 10, 2),
+            (8, '2024-12-31', 'saida', 7, 8, 2)])
+
 
 if __name__ == "__main__":
     unittest.main()
