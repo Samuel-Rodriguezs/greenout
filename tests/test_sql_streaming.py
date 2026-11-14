@@ -30,3 +30,9 @@ class TestSQLStreaming(unittest.TestCase):
         self.assertEqual(consulta(self.con, "03_top2_titulos_por_tipo.sql"), [
             ("filme", "O Ultimo Farol", 220), ("filme", "Orbita", 185),
             ("serie", "Noite Eterna", 348), ("serie", "Codigo Zero", 137)])
+
+    def test_visualizacoes_por_semana(self):
+        self.assertEqual(consulta(self.con, "04_visualizacoes_por_semana.sql"), [
+            ("2025-01-06", 5, 173), ("2025-01-13", 1, 30), ("2025-01-20", 2, 92), ("2025-01-27", 2, 65),
+            ("2025-02-03", 3, 210), ("2025-02-10", 4, 260), ("2025-02-17", 0, 0), ("2025-02-24", 2, 160),
+            ("2025-03-03", 0, 0)])
