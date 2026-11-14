@@ -75,6 +75,10 @@ class TestSQLVendas(unittest.TestCase):
         self.assertEqual(consulta(self.con, "20_dias_ate_primeira_compra.sql"),
                          [("Carla", 31), ("Eva", 32), ("Ana", 56), ("Bruno", 72)])
 
+    def test_clientes_com_problemas(self):
+        self.assertEqual(consulta(self.con, "21_clientes_com_problemas.sql"),
+                         [("Ana", "pendente"), ("Bruno", "pendente"), ("Carla", "cancelado")])
+
 
 if __name__ == "__main__":
     unittest.main()
