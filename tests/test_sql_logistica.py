@@ -30,6 +30,12 @@ class TestSQLLogistica(unittest.TestCase):
             ('CD São Paulo', 'Queijos', 30, 660.0),
             ('CD São Paulo', 'Sucos', 50, 225.0)])
 
+    def test_lotes_a_vencer(self):
+        self.assertEqual(consulta(self.con, "02_lotes_a_vencer.sql"), [
+            ('L004', 'Queijo Minas', 'CD São Paulo', 30, '2025-06-10', -5, 'vencido'),
+            ('L005', 'Iogurte Natural', 'CD Campinas', 50, '2025-06-25', 10, 'crítico'),
+            ('L001', 'Suco de Uva', 'CD São Paulo', 50, '2025-07-01', 16, 'atenção')])
+
 
 if __name__ == "__main__":
     unittest.main()
