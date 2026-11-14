@@ -22,3 +22,11 @@ class TestSQLHospital(unittest.TestCase):
         self.assertEqual(consulta(self.con, "01_medicos_mais_ocupados.sql"), [
             ("Helena Costa", 3, 900.0), ("Paulo Silva", 3, 750.0),
             ("Marta Rocha", 2, 560.0), ("Ivo Tavares", 2, 300.0)])
+
+    def test_hierarquia_medicos(self):
+        self.assertEqual(consulta(self.con, "02_hierarquia_medicos.sql"), [
+            ("Helena Costa", 0, "Helena Costa"),
+            ("Marta Rocha", 1, "Helena Costa > Marta Rocha"),
+            ("Lia Campos", 2, "Helena Costa > Marta Rocha > Lia Campos"),
+            ("Paulo Silva", 1, "Helena Costa > Paulo Silva"),
+            ("Ivo Tavares", 2, "Helena Costa > Paulo Silva > Ivo Tavares")])
