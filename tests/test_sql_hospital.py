@@ -42,3 +42,11 @@ class TestSQLHospital(unittest.TestCase):
             ("Ana Lima", "2025-02-15", 36), ("Ana Lima", "2025-03-30", 43),
             ("Bruno Reis", "2025-03-05", 44), ("Elisa Prado", "2025-03-18", 52),
             ("Fábio Nunes", "2025-03-22", 48)])
+
+    def test_internacoes_duracao(self):
+        self.assertEqual(consulta(self.con, "05_internacoes_duracao.sql"), [
+            ("Elisa Prado", "infarto", "2025-02-20", 10),
+            ("Fábio Nunes", "fratura", "em andamento", 9),
+            ("Bruno Reis", "arritmia", "2025-01-26", 5),
+            ("Carla Dias", "fratura", "2025-02-12", 3),
+            ("Bruno Reis", "arritmia", "2025-03-08", 2)])
