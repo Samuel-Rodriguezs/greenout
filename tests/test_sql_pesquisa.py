@@ -24,6 +24,17 @@ class TestSQLPesquisa(unittest.TestCase):
             ('Genome Review', 3, 3, 1.0),
             ('Network Letters', 3, 3, 1.0)])
 
+    def test_indice_h(self):
+        self.assertEqual(consulta(self.con, "02_indice_h.sql"), [
+            ('Ana Prado', 4, 2),
+            ('Bruno Castro', 4, 2),
+            ('Carla Mendes', 4, 2),
+            ('Diego Ramos', 4, 2),
+            ('Elena Fischer', 3, 1),
+            ('Felipe Tanaka', 1, 1),
+            ('Gabi Alves', 3, 1),
+            ('Hugo Lima', 2, 1)])
+
 
 if __name__ == "__main__":
     unittest.main()
