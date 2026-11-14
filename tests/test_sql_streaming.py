@@ -17,3 +17,6 @@ class TestSQLStreaming(unittest.TestCase):
     def test_schema_carregado(self):
         n = self.con.execute("SELECT COUNT(*) FROM titulos").fetchone()[0]
         self.assertEqual(n, 5)
+
+    def test_minutos_por_usuario(self):
+        self.assertEqual(consulta(self.con, "01_minutos_por_usuario.sql"), [("Ana", 283, 3), ("Cris", 267, 3), ("Edu", 260, 2)])
