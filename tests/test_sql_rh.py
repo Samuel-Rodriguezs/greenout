@@ -50,6 +50,11 @@ class TestSQLRh(unittest.TestCase):
     def test_horas_extras(self):
         self.assertEqual(consulta(self.con, "05_horas_extras.sql"), [('Gina Rocha', 3.5, 170.63), ('Joao Teles', 3.5, 78.75), ('Iara Nunes', 2.0, 52.5)])
 
+    def test_sem_ferias_com_afastamento(self):
+        self.assertEqual(consulta(self.con, "06_sem_ferias_com_afastamento.sql"), [('Hugo Prado', 'sem ferias e sem afastamento'),
+            ('Iara Nunes', 'afastado sem ferias'),
+            ('Joao Teles', 'afastado sem ferias')])
+
 
 if __name__ == "__main__":
     unittest.main()
