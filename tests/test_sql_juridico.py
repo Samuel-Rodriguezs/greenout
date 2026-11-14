@@ -31,6 +31,14 @@ class TestSQLJuridico(unittest.TestCase):
             ('Joana Pires', 2, 'Helena Barros > Rui Matos > Joana Pires', 1),
             ('Pedro Lacerda', 2, 'Helena Barros > Rui Matos > Pedro Lacerda', 2)])
 
+    def test_prazos_vencendo(self):
+        self.assertEqual(consulta(self.con, "03_prazos_vencendo.sql"), [
+            ('0002-2024', 'Recurso ordinário', '2025-06-12', -3, 'vencido'),
+            ('0007-2024', 'Contrarrazões', '2025-06-15', 0, 'urgente'),
+            ('0004-2025', 'Réplica', '2025-06-16', 1, 'urgente'),
+            ('0001-2024', 'Apelação', '2025-06-20', 5, 'próximo'),
+            ('0003-2023', 'Laudo pericial', '2025-06-30', 15, 'próximo')])
+
 
 if __name__ == "__main__":
     unittest.main()
