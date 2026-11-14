@@ -91,6 +91,16 @@ class TestSQLJuridico(unittest.TestCase):
             ('2025-05', 26500.0, 93500.0, 27.5),
             ('2025-06', 3000.0, 96500.0, 3.1)])
 
+    def test_conflitos_e_adversarios(self):
+        self.assertEqual(consulta(self.con, "10_conflitos_e_adversarios.sql"), [
+            ('Antônio Souza', 'adversário externo'),
+            ('Carlos Ferreira', 'adversário externo'),
+            ('Fazenda Estadual', 'adversário externo'),
+            ('Fazenda Municipal', 'adversário externo'),
+            ('Oficina Delta', 'adversário externo'),
+            ('Clínica Gama', 'cliente como adversário'),
+            ('Mercado Beta', 'cliente como adversário')])
+
 
 if __name__ == "__main__":
     unittest.main()
