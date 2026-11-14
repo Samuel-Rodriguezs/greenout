@@ -35,6 +35,11 @@ class TestSQLVendas(unittest.TestCase):
         self.assertEqual(consulta(self.con, "13_produtos_acima_da_media.sql"),
                          [("Notebook", 3000.0), ("Cadeira", 800.0)])
 
+    def test_receita_mensal(self):
+        self.assertEqual(consulta(self.con, "14_receita_mensal.sql"),
+                         [("2025-01", 3100.0), ("2025-02", 1800.0),
+                          ("2025-03", 3910.0), ("2025-04", 1300.0)])
+
 
 if __name__ == "__main__":
     unittest.main()
