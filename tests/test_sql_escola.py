@@ -28,3 +28,7 @@ class TestSQLEscola(unittest.TestCase):
         self.assertEqual(consulta(self.con, "03_ranking_geral.sql"), [
             ("Ana", 8.5, 1), ("Elisa", 8.5, 1), ("Carla", 7.0, 3),
             ("Fábio", 7.0, 3), ("Bruno", 5.5, 5), ("Diego", 4.5, 6)])
+
+    def test_melhor_por_turma(self):
+        self.assertEqual(consulta(self.con, "04_melhor_por_turma.sql"),
+                         [("1A", "Ana", 8.5), ("1B", "Elisa", 8.5)])
