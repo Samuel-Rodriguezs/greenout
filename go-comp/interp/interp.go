@@ -135,8 +135,8 @@ func (in *Interp) executar(c ast.Comando, env *Env) (Valor, bool, error) {
 		if err != nil {
 			return nil, false, err
 		}
-		if f, ok := v.(*Funcao); ok && f.Nome == "" {
-			f.Nome = n.Nome.Nome
+		if _, lit := n.Valor.(*ast.LiteralFuncao); lit {
+			v.(*Funcao).Nome = n.Nome.Nome // só literais recebem o nome da variável
 		}
 		env.Definir(n.Nome.Nome, v)
 	case *ast.Atribuicao:

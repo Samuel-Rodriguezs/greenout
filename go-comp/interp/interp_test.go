@@ -129,6 +129,7 @@ func TestErrosDeExecucao(t *testing.T) {
 		{"chamar nao funcao", "let n = 1;\nn();", "2:2: valor do tipo int não é chamável"},
 		{"aridade", "fn f(a, b) { return a; }\nf(1);", "2:2: 'f' espera 2 argumento(s), recebeu 1"},
 		{"aridade anonima", "let g = fn(a) { };\n(fn(a) { })(1, 2);", "2:12: função espera 1 argumento(s), recebeu 2"},
+		{"funcao anonima devolvida nao herda nome", "fn mk() { return fn(a) { }; }\nlet g = mk();\ng(1, 2);", "3:2: função espera 1 argumento(s), recebeu 2"},
 		{"aridade de embutido", "len(1, 2);", "1:4: 'len' espera 1 argumento(s), recebeu 2"},
 		{"erro de embutido recebe posicao", "len(1);", "1:4: len não aplicável a int"},
 		{"estouro de pilha", "fn f(n) { return f(n + 1); }\nf(0);", "1:19: estouro de pilha: recursão profunda demais"},
