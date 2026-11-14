@@ -78,6 +78,13 @@ class TestSQLPesquisa(unittest.TestCase):
             ('Carla Mendes', 'Diego Ramos', 2),
             ('Elena Fischer', 'Gabi Alves', 2)])
 
+    def test_financiamento_por_agencia(self):
+        self.assertEqual(consulta(self.con, "08_financiamento_por_agencia.sql"), [
+            ('FAPESP', 650000.0, 32.2, 2, 35),
+            ('SNSF', 600000.0, 29.7, 1, 59),
+            ('NSF', 500000.0, 24.8, 1, 47),
+            ('CNPq', 270000.0, 13.4, 0, 29)])
+
 
 if __name__ == "__main__":
     unittest.main()
