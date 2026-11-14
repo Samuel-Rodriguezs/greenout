@@ -25,3 +25,8 @@ class TestSQLFinancas(unittest.TestCase):
     def test_gasto_por_mes(self):
         self.assertEqual(consulta(self.con, "03_gasto_por_mes.sql"),
                          [("2024-01", 2300), ("2024-02", 2550), ("2024-03", 850)])
+
+    def test_maior_despesa_por_categoria(self):
+        self.assertEqual(consulta(self.con, "04_maior_despesa_por_categoria.sql"), [
+            ("Moradia", "Aluguel jan", 1500), ("Alimentação", "Mercado fev", 750),
+            ("Lazer", "Show", 350), ("Transporte", "Combustível", 300)])
