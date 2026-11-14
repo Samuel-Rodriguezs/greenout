@@ -67,6 +67,9 @@ class TestSQLDelivery(unittest.TestCase):
             ('2025-06-08', 100.0, 891.0, 10.1),
             ('2025-06-14', 100.0, 991.0, 10.1)])
 
+    def test_clientes_italiana_e_japonesa(self):
+        self.assertEqual(consulta(self.con, "10_clientes_italiana_e_japonesa.sql"), [('Alice',), ('Bernardo',)])
+
 
 if __name__ == "__main__":
     unittest.main()
