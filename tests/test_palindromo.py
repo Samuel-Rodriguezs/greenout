@@ -12,7 +12,7 @@ class TestPalindromo(unittest.TestCase):
         self.assertTrue(eh_palindromo("arara"))
 
     def test_frase(self):
-        self.assertTrue(eh_palindromo("A sogra má amarga e rega a amassada, e ela, pois, rima"[:0] or "Socorram-me, subi no onibus em Marrocos"))
+        self.assertTrue(eh_palindromo("Socorram-me, subi no onibus em Marrocos"))
 
     def test_negativo(self):
         self.assertFalse(eh_palindromo("python"))
