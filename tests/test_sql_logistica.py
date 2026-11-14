@@ -36,6 +36,15 @@ class TestSQLLogistica(unittest.TestCase):
             ('L005', 'Iogurte Natural', 'CD Campinas', 50, '2025-06-25', 10, 'crítico'),
             ('L001', 'Suco de Uva', 'CD São Paulo', 50, '2025-07-01', 16, 'atenção')])
 
+    def test_hierarquia_categorias(self):
+        self.assertEqual(consulta(self.con, "03_hierarquia_categorias.sql"), [
+            ('Alimentos', 0, 0),
+            ('Alimentos > Bebidas', 1, 1),
+            ('Alimentos > Bebidas > Sucos', 2, 2),
+            ('Alimentos > Laticínios', 1, 1),
+            ('Alimentos > Laticínios > Queijos', 2, 2),
+            ('Limpeza', 0, 2)])
+
 
 if __name__ == "__main__":
     unittest.main()
