@@ -45,3 +45,8 @@ class TestSQLAeroporto(unittest.TestCase):
             ("A320", "AZ100", "AZ101", 10.0), ("A320", "AZ101", "AZ400", 759.0),
             ("B737", "AZ200", "AZ201", 24.5), ("E195", "AZ300", "AZ301", 169.8),
             ("E195", "AZ301", "AZ500", 620.5)])
+
+    def test_pivot_classes_por_voo(self):
+        self.assertEqual(consulta(self.con, "07_pivot_classes_por_voo.sql"), [
+            ("AZ100", 1, 1, 1), ("AZ101", 1, 0, 0), ("AZ200", 2, 1, 0), ("AZ201", 1, 1, 0),
+            ("AZ300", 1, 0, 1), ("AZ301", 1, 0, 0), ("AZ400", 0, 1, 1), ("AZ500", 1, 0, 0)])
