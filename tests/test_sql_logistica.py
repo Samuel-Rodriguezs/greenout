@@ -45,6 +45,13 @@ class TestSQLLogistica(unittest.TestCase):
             ('Alimentos > Laticínios > Queijos', 2, 2),
             ('Limpeza', 0, 2)])
 
+    def test_rotas_a_partir_de_sao_paulo(self):
+        self.assertEqual(consulta(self.con, "04_rotas_a_partir_de_sao_paulo.sql"), [
+            ('CD Campinas', 1, 100, '1>2'),
+            ('CD Curitiba', 1, 400, '1>3'),
+            ('CD Florianópolis', 2, 700, '1>3>5'),
+            ('CD Porto Alegre', 2, 1110, '1>3>4')])
+
 
 if __name__ == "__main__":
     unittest.main()
