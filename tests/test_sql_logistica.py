@@ -96,6 +96,10 @@ class TestSQLLogistica(unittest.TestCase):
             ('Queijo Minas', 60, 'C'),
             ('Queijo Parmesão', 0, 'C')])
 
+    def test_produtos_sem_saida(self):
+        self.assertEqual(consulta(self.con, "09_produtos_sem_saida.sql"), [
+            ('Queijo Parmesão', 40, 1920.0)])
+
 
 if __name__ == "__main__":
     unittest.main()
