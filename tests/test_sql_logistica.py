@@ -85,6 +85,17 @@ class TestSQLLogistica(unittest.TestCase):
             ('Agro Vale', 2, 1, 50.0, 11.0),
             ('Lácteos Serra', 2, 0, 0.0, 8.0)])
 
+    def test_curva_abc_ntile(self):
+        self.assertEqual(consulta(self.con, "08_curva_abc_ntile.sql"), [
+            ('Água Mineral', 1050, 'A'),
+            ('Detergente', 400, 'A'),
+            ('Suco de Uva', 190, 'A'),
+            ('Iogurte Natural', 100, 'B'),
+            ('Suco de Laranja', 100, 'B'),
+            ('Desinfetante', 60, 'B'),
+            ('Queijo Minas', 60, 'C'),
+            ('Queijo Parmesão', 0, 'C')])
+
 
 if __name__ == "__main__":
     unittest.main()
