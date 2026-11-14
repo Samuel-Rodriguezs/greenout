@@ -53,3 +53,8 @@ class TestSQLHospital(unittest.TestCase):
 
     def test_exame_alterado_sem_internacao(self):
         self.assertEqual(consulta(self.con, "06_exame_alterado_sem_internacao.sql"), [("Ana Lima",)])
+
+    def test_receita_mensal_por_especialidade(self):
+        self.assertEqual(consulta(self.con, "07_receita_mensal_por_especialidade.sql"), [
+            ("Cardiologia", 850.0, 0, 800.0), ("Clínica Geral", 0, 300.0, 150.0),
+            ("Ortopedia", 0, 280.0, 280.0)])
