@@ -16,16 +16,16 @@ Formato: `- [ ] pasta/prefixo — descrição`
 
 ## Python (`python/` + `tests/`)
 
-- [ ] python/bio_ — bioinformática: DNA/RNA, tradução de códons, conteúdo GC, complemento reverso, Needleman-Wunsch, Smith-Waterman, distância de Hamming, motivos, FASTA parser
-- [ ] python/geo_ — geometria computacional: área de polígono, ponto em polígono, convex hull, interseção de segmentos, par de pontos mais próximo, triangulação simples, distância haversine
-- [ ] python/fin_ — mercado financeiro: SMA, EMA, RSI, MACD, Bollinger, drawdown, Sharpe, volatilidade, retorno acumulado, backtest simples de cruzamento de médias
-- [ ] python/img_ — processamento de imagem em matrizes: convolução, blur, Sobel, histograma, equalização, limiar de Otsu, rotação, redimensionamento, PGM/PPM parser
-- [ ] python/sig_ — sinais: FFT, DFT inversa, filtros FIR/IIR, janelas, geração de ondas, detecção de picos, correlação, média móvel, codificação Manchester
-- [ ] python/ecs_ — motor de jogo: ECS, colisão AABB e círculos, quadtree, física de partículas, máquina de estados de IA, pathfinding em grade, câmera, tilemap
-- [ ] python/bd_ — mini banco de dados: B-tree, WAL, índices hash, parser SQL, planner simples, transações com MVCC simplificado, LSM-tree simplificada
-- [ ] python/rede_ — redes: CIDR e subnetting, parser de IP/MAC, checksums, máquina de estados TCP, DNS parser, ARP simulado, roteamento por prefixo mais longo
-- [ ] python/so_ — sistemas operacionais: escalonadores (FCFS, SJF, RR, prioridade), paginação (FIFO, LRU, Clock), alocador buddy, semáforos simulados, deadlock detection
-- [ ] python/comp_ — compiladores: lexer, parser descendente, AST, constant folding, análise de escopo, geração de código para a VM, pretty printer, verificador de tipos simples
+- [x] python/bio_ — bioinformática: DNA/RNA, tradução de códons, conteúdo GC, complemento reverso, Needleman-Wunsch, Smith-Waterman, distância de Hamming, motivos, FASTA parser
+- [x] python/geo_ — geometria computacional: área de polígono, ponto em polígono, convex hull, interseção de segmentos, par de pontos mais próximo, triangulação simples, distância haversine
+- [x] python/fin_ — mercado financeiro: SMA, EMA, RSI, MACD, Bollinger, drawdown, Sharpe, volatilidade, retorno acumulado, backtest simples de cruzamento de médias
+- [x] python/img_ — processamento de imagem em matrizes: convolução, blur, Sobel, histograma, equalização, limiar de Otsu, rotação, redimensionamento, PGM/PPM parser
+- [x] python/sig_ — sinais: FFT, DFT inversa, filtros FIR/IIR, janelas, geração de ondas, detecção de picos, correlação, média móvel, codificação Manchester
+- [x] python/ecs_ — motor de jogo: ECS, colisão AABB e círculos, quadtree, física de partículas, máquina de estados de IA, pathfinding em grade, câmera, tilemap
+- [x] python/bd_ — mini banco de dados: B-tree, WAL, índices hash, parser SQL, planner simples, transações com MVCC simplificado, LSM-tree simplificada
+- [x] python/rede_ — redes: CIDR e subnetting, parser de IP/MAC, checksums, máquina de estados TCP, DNS parser, ARP simulado, roteamento por prefixo mais longo
+- [x] python/so_ — sistemas operacionais: escalonadores (FCFS, SJF, RR, prioridade), paginação (FIFO, LRU, Clock), alocador buddy, semáforos simulados, deadlock detection
+- [x] python/comp_ — compiladores: lexer, parser descendente, AST, constant folding, análise de escopo, geração de código para a VM, pretty printer, verificador de tipos simples
 - [ ] python/tipos_ — sistemas de tipos: unificação, Hindley-Milner mínimo, cálculo lambda (redução, Church), combinadores SKI, tipos algébricos, pattern matching
 - [ ] python/fp_ — programação funcional: monads (Maybe, Either, Writer, State), lenses, transducers, memoização, composição, currying, streams preguiçosos
 - [ ] python/gen_ — geradores de dados fictícios com seed: nomes, endereços, CPF/CNPJ válidos, e-mails, lorem, séries temporais, grafos aleatórios
