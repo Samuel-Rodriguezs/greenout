@@ -38,6 +38,12 @@ class TestSQLImobiliaria(unittest.TestCase):
             ('Daniel Esteves', '2025-02', 5, 'pago com atraso'),
             ('Camila Dutra', '2025-05', 4, 'pago com atraso')])
 
+    def test_inadimplencia_por_locatario(self):
+        self.assertEqual(consulta(self.con, "04_inadimplencia_por_locatario.sql"), [('Daniel Esteves', 6, 4, 66.7),
+            ('Camila Dutra', 4, 1, 25.0),
+            ('Ana Beatriz', 10, 2, 20.0),
+            ('Bruno Castro', 8, 1, 12.5)])
+
 
 if __name__ == "__main__":
     unittest.main()
