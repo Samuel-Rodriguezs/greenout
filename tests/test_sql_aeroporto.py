@@ -55,3 +55,8 @@ class TestSQLAeroporto(unittest.TestCase):
         self.assertEqual(consulta(self.con, "08_top2_passageiros_por_pais.sql"), [
             ("Alemanha", "Emma Schmidt", 1850.0, 1), ("Brasil", "Alice Martins", 1500.0, 1),
             ("Brasil", "Camila Ferreira", 1490.0, 2), ("Nigéria", "Daniel Okafor", 180.0, 1)])
+
+    def test_acima_da_media_da_tarifa(self):
+        self.assertEqual(consulta(self.con, "09_acima_da_media_da_tarifa.sql"), [
+            ("Felipe Araújo", "AZ201", "economica", 330.0), ("Alice Martins", "AZ101", "economica", 320.0),
+            ("Felipe Araújo", "AZ200", "economica", 310.0), ("Bernardo Souza", "AZ400", "promocional", 190.0)])
