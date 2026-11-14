@@ -44,6 +44,13 @@ class TestSQLImobiliaria(unittest.TestCase):
             ('Ana Beatriz', 10, 2, 20.0),
             ('Bruno Castro', 8, 1, 12.5)])
 
+    def test_top2_imoveis_por_bairro(self):
+        self.assertEqual(consulta(self.con, "05_top2_imoveis_por_bairro.sql"), [('Centro', 5, 'casa', 3200.0, 1),
+            ('Centro', 2, 'apartamento', 2500.0, 2),
+            ('Jardins', 3, 'casa', 4500.0, 1),
+            ('Jardins', 4, 'apartamento', 2800.0, 2),
+            ('Vila Nova', 8, 'casa', 2600.0, 1)])
+
 
 if __name__ == "__main__":
     unittest.main()
