@@ -18,6 +18,11 @@ class TestSQLImobiliaria(unittest.TestCase):
         n = self.con.execute("SELECT COUNT(*) FROM proprietarios").fetchone()[0]
         self.assertEqual(n, 4)
 
+    def test_receita_por_proprietario(self):
+        self.assertEqual(consulta(self.con, "01_receita_por_proprietario.sql"), [('Lucia Prado', 2, 29200.0),
+            ('Marcos Vieira', 2, 24000.0),
+            ('Antonio Gomes', 2, 12400.0)])
+
 
 if __name__ == "__main__":
     unittest.main()
