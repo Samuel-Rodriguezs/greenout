@@ -30,3 +30,8 @@ class TestSQLFinancas(unittest.TestCase):
         self.assertEqual(consulta(self.con, "04_maior_despesa_por_categoria.sql"), [
             ("Moradia", "Aluguel jan", 1500), ("Alimentação", "Mercado fev", 750),
             ("Lazer", "Show", 350), ("Transporte", "Combustível", 300)])
+
+    def test_calendario_gastos(self):
+        self.assertEqual(consulta(self.con, "05_calendario_gastos.sql"), [
+            ("2024-03-10", 0), ("2024-03-11", 0), ("2024-03-12", 500), ("2024-03-13", 0),
+            ("2024-03-14", 0), ("2024-03-15", 350), ("2024-03-16", 0)])
