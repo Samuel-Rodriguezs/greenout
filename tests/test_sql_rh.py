@@ -47,6 +47,9 @@ class TestSQLRh(unittest.TestCase):
             ('Diego Alves', '2023-07-01', 12500.0, 11000.0, 13.6),
             ('Iara Nunes', '2024-06-01', 2800.0, 2500.0, 12.0)])
 
+    def test_horas_extras(self):
+        self.assertEqual(consulta(self.con, "05_horas_extras.sql"), [('Gina Rocha', 3.5, 170.63), ('Joao Teles', 3.5, 78.75), ('Iara Nunes', 2.0, 52.5)])
+
 
 if __name__ == "__main__":
     unittest.main()
