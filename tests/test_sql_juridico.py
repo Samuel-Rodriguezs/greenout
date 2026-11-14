@@ -63,6 +63,13 @@ class TestSQLJuridico(unittest.TestCase):
             ('0007-2024', 'liminar', '2024-10-01', 19),
             ('0007-2024', 'recurso', '2025-04-15', 196)])
 
+    def test_parcelas_atrasadas(self):
+        self.assertEqual(consulta(self.con, "06_parcelas_atrasadas.sql"), [
+            ('Construtora Alfa', 2, '2025-04-05', 71, 273.0, 'crítico'),
+            ('Construtora Alfa', 3, '2025-05-05', 41, 183.0, 'alto'),
+            ('Clínica Gama', 4, '2025-06-01', 14, 510.0, 'leve'),
+            ('Construtora Alfa', 3, '2025-06-10', 5, 250.0, 'leve')])
+
 
 if __name__ == "__main__":
     unittest.main()
