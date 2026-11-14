@@ -39,3 +39,9 @@ class TestSQLAeroporto(unittest.TestCase):
     def test_fidelidade(self):
         self.assertEqual(consulta(self.con, "05_fidelidade.sql"), [
             ("gold", 2, 3350.0), ("sem programa", 3, 1790.0), ("silver", 1, 1490.0)])
+
+    def test_proximo_voo_aeronave(self):
+        self.assertEqual(consulta(self.con, "06_proximo_voo_aeronave.sql"), [
+            ("A320", "AZ100", "AZ101", 10.0), ("A320", "AZ101", "AZ400", 759.0),
+            ("B737", "AZ200", "AZ201", 24.5), ("E195", "AZ300", "AZ301", 169.8),
+            ("E195", "AZ301", "AZ500", 620.5)])
