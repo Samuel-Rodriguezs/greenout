@@ -17,3 +17,7 @@ class TestSQLBiblioteca(unittest.TestCase):
     def test_atrasados(self):
         self.assertEqual(consulta(self.con, "01_atrasados.sql"),
                          [("Ana", "A Hora da Estrela", 36), ("Carla", "Dom Casmurro", 12)])
+
+    def test_mais_emprestados(self):
+        self.assertEqual(consulta(self.con, "02_mais_emprestados.sql"),
+                         [("Dom Casmurro", 3), ("Capitães da Areia", 2), ("A Hora da Estrela", 1)])
