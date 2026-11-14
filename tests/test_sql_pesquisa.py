@@ -92,6 +92,11 @@ class TestSQLPesquisa(unittest.TestCase):
             ('Gabi Alves', 'USP', 'nunca financiado'),
             ('Hugo Lima', 'MIT', 'nunca financiado')])
 
+    def test_artigos_por_area_raiz(self):
+        self.assertEqual(consulta(self.con, "10_artigos_por_area_raiz.sql"), [
+            ('Computação', 9, 5.91, 2018),
+            ('Biologia', 3, 12.1, 2020)])
+
 
 if __name__ == "__main__":
     unittest.main()
