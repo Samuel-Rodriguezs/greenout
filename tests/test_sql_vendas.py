@@ -22,6 +22,10 @@ class TestSQLVendas(unittest.TestCase):
     def tearDown(self):
         self.con.close()
 
+    def test_clientes_grandes_compradores(self):
+        self.assertEqual(consulta(self.con, "11_clientes_grandes_compradores.sql"),
+                         [("Ana", 3300.0), ("Bruno", 2300.0), ("Eva", 500.0)])
+
 
 if __name__ == "__main__":
     unittest.main()
