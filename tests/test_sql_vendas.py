@@ -40,6 +40,11 @@ class TestSQLVendas(unittest.TestCase):
                          [("2025-01", 3100.0), ("2025-02", 1800.0),
                           ("2025-03", 3910.0), ("2025-04", 1300.0)])
 
+    def test_ranking_clientes(self):
+        self.assertEqual(consulta(self.con, "15_ranking_clientes.sql"),
+                         [(1, "Ana", 6300.0), (2, "Bruno", 3100.0),
+                          (3, "Eva", 500.0), (4, "Carla", 210.0)])
+
 
 if __name__ == "__main__":
     unittest.main()
