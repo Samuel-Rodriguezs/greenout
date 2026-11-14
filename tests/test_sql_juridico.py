@@ -23,6 +23,14 @@ class TestSQLJuridico(unittest.TestCase):
             ('Clara Nunes', 2, 150000.0),
             ('Pedro Lacerda', 2, 140000.0)])
 
+    def test_hierarquia_advogados(self):
+        self.assertEqual(consulta(self.con, "02_hierarquia_advogados.sql"), [
+            ('Helena Barros', 0, 'Helena Barros', 1),
+            ('Clara Nunes', 1, 'Helena Barros > Clara Nunes', 2),
+            ('Rui Matos', 1, 'Helena Barros > Rui Matos', 3),
+            ('Joana Pires', 2, 'Helena Barros > Rui Matos > Joana Pires', 1),
+            ('Pedro Lacerda', 2, 'Helena Barros > Rui Matos > Pedro Lacerda', 2)])
+
 
 if __name__ == "__main__":
     unittest.main()
